@@ -997,13 +997,13 @@ Connection ~ 6350 2250
 Wire Wire Line
 	6350 2250 6350 2550
 Text Label 7400 4150 2    50   ~ 0
-STLINK_RX
+T_RX
 Wire Wire Line
 	7400 4150 6950 4150
 Wire Wire Line
 	6950 4050 7400 4050
 Text Label 7400 4050 2    50   ~ 0
-STLINK_TX
+T_TX
 Text Label 8950 3350 0    50   ~ 0
 V_REF
 Wire Wire Line
@@ -1087,12 +1087,6 @@ Wire Wire Line
 	5350 3950 5650 3950
 Text Label 5200 5050 0    50   ~ 0
 T_SWDIO_IN
-Wire Wire Line
-	5200 5050 5650 5050
-Text Label 4500 5250 0    50   ~ 0
-T_SWDIO_IN
-Wire Wire Line
-	4500 5250 4950 5250
 Text Label 7400 4450 2    50   ~ 0
 T_JTDO
 Text Label 7400 4550 2    50   ~ 0
@@ -1224,54 +1218,28 @@ $EndComp
 Text Notes 9200 2300 0    50   ~ 0
 JTAG / SWD Out
 $Comp
-L MCU_ST_STM32F1:STM32F103CBTx U3
-U 1 1 5F43E051
-P 6350 4050
-F 0 "U3" H 5800 5500 50  0000 C CNN
-F 1 "STM32F103CBTx" V 6350 4050 50  0000 C CNN
-F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 5750 2650 50  0001 R CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00161566.pdf" H 6350 4050 50  0001 C CNN
-	1    6350 4050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6250 2550 6350 2550
-Wire Wire Line
-	6450 2550 6550 2550
-$Comp
 L power:GND #PWR0103
 U 1 1 5F46D5AE
-P 1350 5750
-F 0 "#PWR0103" H 1350 5500 50  0001 C CNN
-F 1 "GND" H 1355 5577 50  0000 C CNN
-F 2 "" H 1350 5750 50  0001 C CNN
-F 3 "" H 1350 5750 50  0001 C CNN
-	1    1350 5750
+P 1350 5800
+F 0 "#PWR0103" H 1350 5550 50  0001 C CNN
+F 1 "GND" H 1355 5627 50  0000 C CNN
+F 2 "" H 1350 5800 50  0001 C CNN
+F 3 "" H 1350 5800 50  0001 C CNN
+	1    1350 5800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1500 5700 1350 5700
+	1500 5750 1350 5750
 Wire Wire Line
-	1350 5700 1350 5750
+	1350 5750 1350 5800
 Wire Wire Line
-	1050 5600 1500 5600
+	1050 5650 1500 5650
 Wire Wire Line
-	1050 5500 1500 5500
-Text Label 1050 5500 0    50   ~ 0
-STLINK_TX
-Text Label 1050 5600 0    50   ~ 0
-STLINK_RX
-$Comp
-L Connector_Generic:Conn_01x03 J5
-U 1 1 5F46500A
-P 1700 5600
-F 0 "J5" H 1800 5550 50  0000 C CNN
-F 1 "STLINK_UART" H 2000 5650 50  0000 C CNN
-F 2 "josh-connectors:UART_3_PIN_SMD_PROG" H 1700 5600 50  0001 C CNN
-F 3 "~" H 1700 5600 50  0001 C CNN
-	1    1700 5600
-	1    0    0    1   
-$EndComp
+	1050 5550 1500 5550
+Text Label 1050 5550 0    50   ~ 0
+T_TX
+Text Label 1050 5650 0    50   ~ 0
+T_RX
 $Comp
 L Power_Protection:USBLC6-2P6 U1
 U 1 1 5F4B02DF
@@ -1285,10 +1253,42 @@ F 3 "https://www.st.com/resource/en/datasheet/usblc6-2.pdf" H 3550 2100 50  0001
 $EndComp
 Wire Wire Line
 	3350 1300 3350 1350
-Wire Wire Line
-	6150 2550 6250 2550
+Connection ~ 6450 2550
 Connection ~ 6250 2550
 Wire Wire Line
 	6350 2550 6450 2550
-Connection ~ 6450 2550
+Wire Wire Line
+	6450 2550 6550 2550
+Wire Wire Line
+	6150 2550 6250 2550
+Wire Wire Line
+	6250 2550 6350 2550
+$Comp
+L MCU_ST_STM32F1:STM32F103CBTx U3
+U 1 1 5F43E051
+P 6350 4050
+F 0 "U3" H 5800 5500 50  0000 C CNN
+F 1 "STM32F103CBTx" V 6350 4050 50  0000 C CNN
+F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 5750 2650 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00161566.pdf" H 6350 4050 50  0001 C CNN
+	1    6350 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x03 J5
+U 1 1 5F46500A
+P 1700 5650
+F 0 "J5" H 1900 5600 50  0000 C CNN
+F 1 "TGT_UART" H 2000 5700 50  0000 C CNN
+F 2 "josh-connectors:UART_3_PIN_SMD_PROG" H 1700 5650 50  0001 C CNN
+F 3 "~" H 1700 5650 50  0001 C CNN
+	1    1700 5650
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	4950 5250 4900 5250
+Wire Wire Line
+	4900 5250 4900 5050
+Wire Wire Line
+	4900 5050 5650 5050
 $EndSCHEMATC
